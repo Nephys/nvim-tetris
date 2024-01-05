@@ -1,5 +1,5 @@
 # nvim-tetris
-Bringing emacs' greatest feature to neovim - Tetris!
+Bringing emacs' greatest feature to neovim - Tetris! (featuring vim controls now)
 
 ![Gameplay Screenshot](./gameplay.png "Some poorly executed demo gameplay")
 
@@ -15,10 +15,10 @@ nvim-tetris is a work-in-progress, and is not feature complete.
 - If your colours look weird, ensure you are using a terminal which supports true colour, you have configured tmux for true colour support if you are using tmux, and you have the `termguicolors` option enabled in Neovim.
 
 ## Controls
-- Left Arrow: move left
-- Right Arrow: move right
-- Up Arrow: rotate piece
-- Down Arrow: soft drop
+- h: move left
+- l: move right
+- k: rotate piece
+- j: soft drop
 - Space Bar: hard drop
 
 ## What Works

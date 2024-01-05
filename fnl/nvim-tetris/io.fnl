@@ -112,21 +112,21 @@
   (init_highlights))
 
 (defn set_game_maps []
-  (let [mappings {"<Left>" "move_left()"
-                  "<Right>" "move_right()"
-                  "<Up>" "rotate()"
-                  "<Down>" "soft_drop()"
-                  "<Space>" "hard_drop()"}]
-    (each [k v (pairs mappings)]
-      (api.nvim_buf_set_keymap buf "n" k (.. ":lua require\"nvim-tetris.game\"." v "<cr>") {:nowait true
-                                                                                            :noremap true
-                                                                                            :silent true}))
     (let [other_chars ["a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"]]
       (each [k v (ipairs other_chars)]
         (api.nvim_buf_set_keymap buf "n" v "" {:nowait true :noremap true :silent true})
         (api.nvim_buf_set_keymap buf "n" (string.upper v) "" {:nowait true :noremap true :silent true})
         (api.nvim_buf_set_keymap buf "n" (.. "<c-" v ">") "" {:nowait true :noremap true :silent true})))))
 
+  (let [mappings {"h" "move_left()"
+                 "l" "move_right()"
+                 "k" "rotate()"
+                 "j" "soft_drop()"
+                 "<Space>" "hard_drop()"}]
+    (each [k v (pairs mappings)]
+      (api.nvim_buf_set_keymap buf "n" k (.. ":lua require\"nvim-tetris.game\"." v "<cr>") {:nowait true
+                               :noremap true
+                               :silent true}))
 (defn prepare_game_cleanup []
   (api.nvim_command "autocmd BufWipeout tetris lua require(\"nvim-tetris.game\").stop_game()"))
 

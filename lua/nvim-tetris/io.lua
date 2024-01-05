@@ -345,15 +345,15 @@ do
   do
     local v_0_0 = nil
     local function set_game_maps0()
-      local mappings = {["<Down>"] = "soft_drop()", ["<Left>"] = "move_left()", ["<Right>"] = "move_right()", ["<Space>"] = "hard_drop()", ["<Up>"] = "rotate()"}
-      for k, v0 in pairs(mappings) do
-        api.nvim_buf_set_keymap(buf, "n", k, (":lua require\"nvim-tetris.game\"." .. v0 .. "<cr>"), {noremap = true, nowait = true, silent = true})
-      end
       local other_chars = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}
       for k, v0 in ipairs(other_chars) do
         api.nvim_buf_set_keymap(buf, "n", v0, "", {noremap = true, nowait = true, silent = true})
         api.nvim_buf_set_keymap(buf, "n", string.upper(v0), "", {noremap = true, nowait = true, silent = true})
         api.nvim_buf_set_keymap(buf, "n", ("<c-" .. v0 .. ">"), "", {noremap = true, nowait = true, silent = true})
+      end
+      local mappings = {["j"] = "soft_drop()", ["h"] = "move_left()", ["l"] = "move_right()", ["<Space>"] = "hard_drop()", ["k"] = "rotate()"}
+      for k, v0 in pairs(mappings) do
+          api.nvim_buf_set_keymap(buf, "n", k, (":lua require\"nvim-tetris.game\"." .. v0 .. "<cr>"), {noremap = true, nowait = true, silent = true})
       end
       return nil
     end
